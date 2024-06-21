@@ -1,0 +1,16 @@
+version: "3.4"
+
+services:
+  mq:
+    image: redis
+    container_name: mq
+
+  was:
+    container_name: was
+    build:
+      context: ./was
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./was:/app
+      - /app/node_modules
